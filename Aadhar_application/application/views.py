@@ -8,3 +8,6 @@ def index(request):
 	
 def register(request):
 	return render(request,'signup.html');
+
+def verify(request):
+	return render(request,'verification.html');
