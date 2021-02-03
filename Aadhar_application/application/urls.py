@@ -11,4 +11,5 @@ urlpatterns =[
 	path('logedin',views.logedin),
 	path('invalid',views.invalid),
 	path('logout',views.logout),
+	path('otpvalid',views.otpvalid),
 	]

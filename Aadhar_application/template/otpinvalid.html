@@ -31,24 +31,12 @@
 					<img src="{% static 'images/img-01.png' %}" alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form" action="otpvalid" method="post">{% csrf_token %}
+				<form class="login100-form validate-form" action="register" method="post">{% csrf_token %}
 					<span class="login100-form-title">
-						Member Verification
+						Invalid otp please sign up Again..
 					</span>
-					<div class="wrap-input100 validate-input" data-validate = "Valid otp is required">
-						<input class="input100" type="text" name="otp" maxlength="4" placeholder="-  -  -  -">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
-					</div>
 					<div class="container-login100-form-btn">
-						<input class="login100-form-btn" type="submit" value="Verify">
-					</div>
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-						<a href="verify">Resend Otp</a>
-						</button>
+						<input class="login100-form-btn" type="submit" value="Signup again">
 					</div>
 				</form>
 			</div>
