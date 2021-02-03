@@ -1,5 +1,5 @@
 {% load static %}
-{% csrf_token %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +31,8 @@
 					<img src="{% static 'images/img-01.png' %}" alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form" action="verify" method="post">
+				<form class="login100-form validate-form" action="verify" method="post">{% csrf_token %}
+				{% csrf_token %}
 					<span class="login100-form-title">
 						Member Signup
 					</span>
