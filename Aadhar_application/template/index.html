@@ -65,7 +65,10 @@
 							Username / Password?
 						</a>
 					</div>
-
+					<br>
+					{% for message in messages %}
+					{{ message }}
+					{% endfor %}
 					<div class="text-center p-t-136">
 						<a class="txt2" href="register">
 							Create your Account

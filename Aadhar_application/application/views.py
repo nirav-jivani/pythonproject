@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render , redirect
 #from django.shortcuts import render_to_response
 from django.views.generic import TemplateView
 from django.http import HttpResponseRedirect
-from django.contrib import auth
+from django.contrib import auth ,messages
+from django.contrib.auth.models import auth ,User
 from django.template.context_processors import csrf
 import twilio
 from twilio.rest import Client
@@ -16,6 +17,23 @@ def index(request):
 def register(request):
 	c = {}
 	c.update(csrf(request))
+	if(request.method == 'POST'):
+		uname=request.session['uname']=request.POST['user']
+		pass1=request.session['pass1']=request.POST['pass']
+		pass3=request.POST['pass2']
+		email=request.session['email']=request.POST['Email']
+		num=request.POST['number']
+		if(pass1 != pass3):
+			messages.info(request,'Password does not match...')
+			return redirect('/register')
+		elif User.objects.filter(username=uname):
+			messages.info(request,'username already exist..')
+			return redirect('/register')
+		elif User.objects.filter(last_name=num):
+			messages.info(request,'username already exist..')
+			return redirect('/register')
+		else:
+			return redirect('/verify')
 	return render(request,'signup.html', c)
 
 def verify(request):
@@ -29,11 +47,11 @@ def verify(request):
 	client=Client(id,token)
 	otp=random.randint(1000,9999)
 	request.session['otps']=otp;
-	client.messages.create(
-	body="your otp for for verfication is "+str(otp),
-	from_='+17084017359',
-	to=num1
-	)
+	#client.messages.create(
+	#body="your otp for for verfication is "+str(otp),
+	#from_='+17084017359',
+	#to=num1
+	#)
 	c = {}
 	c.update(csrf(request))
 	return render(request,'verification.html', c)
@@ -69,8 +87,10 @@ def otpvalid(request):
 	c.update(csrf(request))
 	temp=str(request.POST.get('otp',''))
 	temp2=str(request.session['otps'])
-	if temp==temp2:
-		return render(request,'index.html',c)
-	else:
-		return render(request,'otpinvalid.html',c)
+	user=User.objects.create_user(username=request.session['uname'],password=request.session['pass1'],email=request.session['email'],last_name=int(request.session['nums']))
+	user.save()
+	messages.info(request,'user created successfully..')
+	return redirect('/')
+	#else:
+	#	return render(request,'otpinvalid.html',c)
 		
