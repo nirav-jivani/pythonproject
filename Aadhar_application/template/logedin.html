@@ -31,13 +31,26 @@
 					<img src="{% static 'images/img-01.png' %}" alt="IMG">
 				</div>
 
+				<span>
+				<form class="login100-form validate-form" action="new_Aadhar/new_form" method="post">{% csrf_token %}
+					<div class="container-login100-form-btn">
+						<a href="logout"><input class="login100-form-btn" type="submit" value="      Apply New Aadhar    "></a>
+						</form>
+					</div>
+					<div class="container-login100-form-btn">
+						<a href="logout"><input class="login100-form-btn" type="submit" value="      Update in Aadhar      "></a>
+					</div>
+					<div class="container-login100-form-btn">
+						<a href="logout"><input class="login100-form-btn" type="submit" value="     Download Aadhar    "></a>
+					</div>
+					<div class="container-login100-form-btn">
+						<a href="logout"><input class="login100-form-btn" type="submit" value="             Generation            "></a>
+					</div>
 				<form class="login100-form validate-form" action="logout" method="post">{% csrf_token %}
-					<span class="login100-form-title">
-						you are logged in sucessfully
-					</span>
 					<div class="container-login100-form-btn">
 						<input class="login100-form-btn" type="submit" value="log out">
 					</div>
+				</span>
 				</form>
 			</div>
 		</div>
