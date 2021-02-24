@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 	'application',
+	'new_Aadhar',
 ]
 
 MIDDLEWARE = [
@@ -125,11 +126,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+MEDIA_URL = '/images/'
 STATICFILES_DIRS = [
 	os.path.join(BASE_DIR,'application/static'),
 	os.path.join(BASE_DIR,'new_Aadhar/static')
 	]
 STATIC_ROOT = os.path.join(BASE_DIR,'imageFile')
 
-
+MEDIA_ROOT=os.path.join(BASE_DIR,'imageFile/images')
 

@@ -36,7 +36,7 @@
 
 	<div class="container-contact100">
 		<div class="wrap-contact100">
-			<form class="contact100-form validate-form" action="dec">{% csrf_token %}
+			<form class="contact100-form validate-form" method="POST" action="preview" enctype="multipart/">{% csrf_token %}
 				<span class="contact100-form-title">
 					Upload Document
 				</span>
@@ -49,7 +49,7 @@
 							<option value="passport">passport</option>
 							<option value="ration">ration card</option>
 						</select>
-						&nbsp &nbsp &nbsp &nbsp &nbsp <input class="label-input100" type="file" name="addfile" required />
+						&nbsp &nbsp &nbsp &nbsp &nbsp <input class="label-input100" type="file" accept="image/*" name="addfile" id="af" required />
 					</div>
 				</div>
 			
@@ -63,7 +63,7 @@
 							<option value="pan" selected>PAN Card</option>
 							<option value="pass">passport</option>
 						</select>
-					&nbsp &nbsp &nbsp &nbsp &nbsp <input class="label-input100" type="file" name="agefile" required />
+					&nbsp &nbsp &nbsp &nbsp &nbsp <input class="label-input100" type="file" accept="image/*" name="agefile" id="agaf" required />
 					</div>
 				</div>
 				
@@ -71,7 +71,7 @@
 				<div class="wrap-input100 input100-select bg1">
 					<span class="label-input100">Photograph</span>
 					<div>
-					&nbsp  <input class="label-input100" type="file" name="phfile" required />
+					&nbsp  <input class="label-input100" type="file" accept="image/*" name="phfile" id="paf" required />
 					</div>
 				</div>
 				<div class="container-contact100-form-btn">

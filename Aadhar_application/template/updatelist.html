@@ -23,7 +23,7 @@
 <!--===============================================================================================-->
 </head>
 <body>
-		{% for message in messages %}
+	{% for message in messages %}
 			<script>alert("{{ message }}")</script>
 		{% endfor %}
 	<div class="limiter">
@@ -32,21 +32,22 @@
 				<div class="login100-pic js-tilt" data-tilt>
 					<img src="{% static 'images/img-01.png' %}" alt="IMG">
 				</div>
-
 				<span>
-				<form class="login100-form validate-form" action="new_form" method="post">{% csrf_token %}
+
+				<span class="login100-form-title">
+						Update List
+					</span>
 					<div class="container-login100-form-btn">
-						<a href="logout"><input class="login100-form-btn" type="submit" value="      Apply New Aadhar    "></a>
-						</form>
+						<a href="updatename"><input class="login100-form-btn" type="submit" value="             update name           "></a>
 					</div>
 					<div class="container-login100-form-btn">
-						<a href="updateinfo"><input class="login100-form-btn" type="submit" value="      Update in Aadhar      "></a>
+						<a href="updateDOB"><input class="login100-form-btn" type="submit" value="               Update DOB              "></a>
 					</div>
 					<div class="container-login100-form-btn">
-						<a href="logout"><input class="login100-form-btn" type="submit" value="     Download Aadhar    "></a>
+						<a href="updateadd"><input class="login100-form-btn" type="submit" value="          Update Address          "></a>
 					</div>
 					<div class="container-login100-form-btn">
-						<a href="logout"><input class="login100-form-btn" type="submit" value="             Generation            "></a>
+						<a href="updatephoto"><input class="login100-form-btn" type="submit" value="             Update photo            "></a>
 					</div>
 				<form class="login100-form validate-form" action="logout" method="post">{% csrf_token %}
 					<div class="container-login100-form-btn">

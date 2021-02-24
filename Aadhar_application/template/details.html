@@ -1,0 +1,142 @@
+<html>
+<head><title>form preview</title>
+<style>
+.button {
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #4CAF50;
+}
+
+.button1:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+* {
+  box-sizing: border-box;
+}
+
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 60%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+#customers h1 {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #4CAF50;
+  color: white;
+}
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+</style>
+</head>
+<body>
+<form action="submitform" method="get">{% csrf_token %} 
+<table border="6px" align="center" id="customers">
+<tr>
+<td colspan="2" align="center"><h1>FORM 6A</h1></td>
+</tr>
+<tr>
+<td colspan="2" align="center"><h3>FORM FOR INCLUSION IN AADHAR CARD AND CONFIRM INDIAN CITIZENSHIP</h3></td>
+</tr>
+<tr>
+<td colspan="2" align="left">
+To , The Aadhar card registration officer , gujrat Assambely
+</td>
+<tr>
+<td colspan="2" align="left">
+I request that my name be included in the Aadhar card system for the above Consitituency<br>
+<b>(^)first time applier</b><br>
+Particulars in support of my claim inclusion in the Aadhar card enrolls are given below-
+</td>
+</tr>
+<tr>
+<td><label>phot</td>
+<td>{{ it.phf }} </td>
+</tr>
+<tr>
+<td><label>Name</td>
+<td>{{ it.name }} </td>
+</tr>
+<tr>
+<td><label>Gender</td>
+<td>{{ it.gender }} </td>
+</tr>
+<tr>
+<td><label>address</td>
+<td>{{ it.address }} </td>
+</tr>
+<tr>
+<td><label>Relation Type</td>
+<td>{{ it.relationtype }} </td>
+</tr>
+<tr>
+<td><label>Relative Name</td>
+<td>{{ it.relativename }} </td>
+</tr>
+<tr>
+<td><label>Birth Place</td>
+<td>{{ it.birthaddress }} </td>
+</tr><tr>
+<td><label>Birth Date</td>
+<td>{{ it.birthdate }} </td>
+</tr><tr>
+<td><label>Mobile Number</td>
+<td>{{ it.number }} </td>
+</tr>
+<tr>
+<td><label>Email</td>
+<td>{{ it.email }} </td>
+</tr>
+<tr>
+<td colspan="2" align="left">
+<h2>DECLERATION:</h2>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="left">
+I hereby declare that to the best of knowledge and belief-<br>
+(i)I am citizen of india and place of my birth is Village/Town <b>{{ it.birthaddress }}</b><br>
+(ii)I am ordinarily resident at the address given at (h) above since <b> {{ it.rdate }}</b><br>
+(iii)I have not applied for the inclusion of my name for aadhar card roll for any other Consitituency
+</td>
+</tr>
+<tr>
+<td colspan="2" align="left">
+Applicant Place:<b>{{ it.place }}</b><br>
+Applicant Date:<b>{{ it.fdate }}</b>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center">
+<input class="button button1" type="submit" />
+</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

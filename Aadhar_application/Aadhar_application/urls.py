@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 	path('',include('application.urls')),
 	path('',include('new_Aadhar.urls')),
+    path('',include('update_temp.urls')),
 ]

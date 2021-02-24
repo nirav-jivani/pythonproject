@@ -78,6 +78,7 @@ def invalid(request):
 	return render(request,'invalid.html', c)
 	
 def logout(request):
+	messages.info(request,"Logout successfully....  Thank you!!!!!")
 	c = {}
 	c.update(csrf(request))
 	return render(request,'index.html', c)

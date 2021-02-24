@@ -3,9 +3,11 @@ from . import views
 from django.contrib.auth import views as auth_views
 
 urlpatterns =[
-	path('new_Aadhar/new_form',views.address),
-	path('new_Aadhar/dob',views.dob),
-	path('new_Aadhar/personal',views.personal),
-	path('new_Aadhar/dec',views.declaration),
-	path('new_Aadhar/proof',views.proof),
+	path('new_form',views.address),
+	path('dob',views.dob),
+	path('personal',views.personal),
+	path('dec',views.declaration),
+	path('proof',views.proof),
+	path('preview',views.preview),
+	path('submitform',views.submitform),
 	]

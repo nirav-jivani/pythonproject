@@ -24,7 +24,9 @@
 <!--===============================================================================================-->
 </head>
 <body>
-	
+	{% for message in messages %}
+			<script>alert("{{ message }}")</script>
+		{% endfor %}
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
@@ -66,9 +68,6 @@
 						</a>
 					</div>
 					<br>
-					{% for message in messages %}
-					{{ message }}
-					{% endfor %}
 					<div class="text-center p-t-136">
 						<a class="txt2" href="register">
 							Create your Account
