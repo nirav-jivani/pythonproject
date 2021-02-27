@@ -18,7 +18,14 @@ def updateinfo(request):
 def updatelist(request):
 	c = {}
 	c.update(csrf(request))
-	return render(request,'updatelist.html',c)
+	number1=request.POST['number']
+	uid=request.POST['anum']
+	try:
+		s1=newapp.objects.get(id=uid,number=number1)
+		return render(request,'updatelist.html',c)
+	except:
+		messages.info(request,'invalid details please enter valid details')
+		return render(request,'logedin.html',c)
 
 def updatename(request):
 	c = {}

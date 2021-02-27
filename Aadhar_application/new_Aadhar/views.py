@@ -6,7 +6,8 @@ from django.contrib.auth.models import auth ,User
 from django.template.context_processors import csrf
 from new_Aadhar.models import newapp
 from django.core import serializers
-import base64
+from .forms import imageupload
+import random
 # Create your views here.
 
 def address(request):
@@ -45,35 +46,18 @@ def proof(request):
 	request.session['fdate']=request.POST['date']
 	c = {}
 	c.update(csrf(request))
-	return render(request,'proof.html', c)
+	test={}
+	test['form']=imageupload();
+	return render(request,'proof.html',test)
 
 def preview(request):
+	uidt=random.randint(100000000000,999999999999)
+	request.session['uid']=uidt
 	c = {}
 	c.update(csrf(request))
 	request.session['addfname']=request.POST['adp']
 	request.session['agefname']=request.POST['agep']
-	request.session['addf']=request.POST.getlist('addfile')
-	request.session['agef']=request.POST.getlist('agefile')
-	temp=request.session['phf']=request.POST.getlist('phfile')
-	ls=newapp(c,name=request.session['name'],gender=request.session['gender']
-	,address=request.session['address']
-	,relationtype=request.session['relation']
-	,relativename=request.session['rname']
-	,birthaddress=request.session['baddress']
-	,birthdate=request.session['bdate']
-	,number=request.session['number1']
-	,email=request.session['email']
-	,rdate=request.session['rdate']
-	,fdate=request.session['fdate']
-	,place=request.session['place']
-	,phf=temp[0]);
-	
-	return render(request,'details.html',{'it':ls})
-
-def submitform(request):
-	addf1=request.session['addf']
-	agef1=request.session['agef']
-	phf1=request.session['phf']
+	test=imageupload(request.POST,request.FILES)
 	ls=newapp(name=request.session['name'],gender=request.session['gender']
 	,address=request.session['address']
 	,relationtype=request.session['relation']
@@ -87,11 +71,15 @@ def submitform(request):
 	,place=request.session['place']
 	,addfname=request.session['addfname']
 	,agefname=request.session['agefname']
-	,addf=addf1[0]
-	,agef=agef1[0]
-	,phf=phf1[0]);
+	,addf=request.FILES['file1']
+	,agef=request.FILES['file2']
+	,phf=request.FILES['file3']
+	,uid=uidt);
 	ls.save();
+	return render(request,'details.html',{'it':ls})
+
+def submitform(request):
 	c = {}
 	c.update(csrf(request))
-	messages.info(request,"your registeration sucessfully..../n  your uid/aadhar card number is ")
+	messages.info(request,"your registeration sucessfully....  your vid/aadhar card number is "+str(request.session['uid']) +' pelase first get your Aadhar number from genaration section using vid')
 	return render(request,'logedin.html',c)

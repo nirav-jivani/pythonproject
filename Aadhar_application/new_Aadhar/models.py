@@ -17,8 +17,10 @@ class newapp(models.Model):
 	place=models.CharField(max_length=20)
 	addfname=models.CharField(max_length=20,null=True)
 	agefname=models.CharField(max_length=20,null=True)
-	addf=models.ImageField(null=True,blank=True)
-	agef=models.ImageField(null=True,blank=True)
-	phf=models.ImageField(null=True,blank=True)
+	addf=models.ImageField(null=True,blank=True,upload_to="images/")
+	agef=models.ImageField(null=True,blank=True,upload_to="images/")
+	phf=models.ImageField(null=True,blank=True,upload_to="images/")
+	uid=models.BigIntegerField()
 	class Meta:
 		db_table="user_details"
+

@@ -1,6 +1,11 @@
+{% load static %}
 <html>
 <head><title>form preview</title>
 <style>
+img {  
+max-width: 15%;  
+max-height: 10%;  
+} 
 .button {
   border: none;
   color: white;
@@ -75,8 +80,8 @@ Particulars in support of my claim inclusion in the Aadhar card enrolls are give
 </td>
 </tr>
 <tr>
-<td><label>phot</td>
-<td>{{ it.phf }} </td>
+<td><label>photo</td>
+<td><a href="{{it.phf.url}}" target="_blank"><img src="{{ it.phf.url }}" alt="{{ it.phf}}" ></a> </td>
 </tr>
 <tr>
 <td><label>Name</td>
@@ -133,7 +138,7 @@ Applicant Date:<b>{{ it.fdate }}</b>
 </tr>
 <tr>
 <td colspan="2" align="center">
-<input class="button button1" type="submit" />
+<input class="button button1" type="submit" value="VERIFYED" />
 </td>
 </tr>
 </table>

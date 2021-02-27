@@ -31,35 +31,36 @@
 					<img src="{% static 'images/img-01.png' %}" alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form" action="updatelist" method="post">{% csrf_token %}
+				<form class="login100-form validate-form" action="uidisplay" method="post">{% csrf_token %}
 				{% csrf_token %}
 					<span class="login100-form-title">
-						Search Aadhar and Validate
+						A-Number Generation
 					</span>
 
-					<div class="wrap-input100 validate-input" data-validate = "Valid Aadhar number is required">
-						<input class="input100" type="number" name="anum" placeholder="enter Aadhar number">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
-					</div>					
-					<div class="wrap-input100 validate-input" data-validate = "Mobile Number is required">
-						<input class="input100" type="number" name="number" placeholder="Mobile Number">
+					<div class="wrap-input100 validate-input" data-validate = "Valid vid is required">
+						<input class="input100" type="number" name="vid" placeholder="vid number">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
 						</span>
 					</div>
-					<div class="wrap-input100 validate-input" data-validate = "enter Master otp">
-						<input class="input100" type="number" name="msotp" placeholder="enter master otp">
+					
+					<div class="wrap-input100 validate-input" data-validate = "Mobile Number is required">
+						<input class="input100" type="text" name="number" placeholder="Mobile Number">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
 						</span>
-					</div>	
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Valid otp is required">
+						<input class="input100" type="text" name="otp" maxlength="4" placeholder="-  -  -  -">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
 					<div class="container-login100-form-btn">
-						<input  class="login100-form-btn" type="submit" value="validate">
+						<input  class="login100-form-btn" type="submit" value="Generate">
 						</input>
 					</div>
 				</form>
