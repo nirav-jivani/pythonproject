@@ -33,7 +33,9 @@
 </head>
 <body>
 
-
+{% for message in messages %}
+			<script>alert("{{ message }}")</script>
+		{% endfor %}
 	<div class="container-contact100">
 		<div class="wrap-contact100">
 			<form class="contact100-form validate-form" method="post" action="dec">{% csrf_token %}

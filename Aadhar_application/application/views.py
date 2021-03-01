@@ -57,6 +57,8 @@ def verify(request):
 	return render(request,'verification.html', c)
 	
 def check(request):
+	c = {}
+	c.update(csrf(request))
 	user=request.POST.get('user','')
 	password=request.POST.get('pass','')
 	us=auth.authenticate(username=user,password=password);
@@ -65,7 +67,8 @@ def check(request):
 		auth.login(request,us)
 		return HttpResponseRedirect('logedin')
 	else:
-		return HttpResponseRedirect('invalid')
+		messages.info(request,"invalid user name or password please enter valid details!!")
+		return render(request,'index.html', c)
 		
 def logedin(request):
 	c = {}

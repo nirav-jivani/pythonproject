@@ -6,9 +6,8 @@ from django.contrib.auth.models import auth ,User
 from django.template.context_processors import csrf
 from new_Aadhar.models import newapp
 from django.core import serializers
-import base64
-
-# Create your views here.
+from .forms import imageupload
+import random
 
 def updateinfo(request):
 	c = {}
@@ -22,6 +21,7 @@ def updatelist(request):
 	uid=request.POST['anum']
 	try:
 		s1=newapp.objects.get(id=uid,number=number1)
+		request.session['uid']=uid
 		return render(request,'updatelist.html',c)
 	except:
 		messages.info(request,'invalid details please enter valid details')
@@ -33,6 +33,12 @@ def updatename(request):
 	return render(request,'updatename.html',c)
 
 def validname(request):
+	name1=request.POST['name']+request.POST['surname']
+	gen=request.POST['gender']
+	s1=newapp.objects.get(id=request.session['uid'])
+	s1.name=name1
+	s1.gender=gen
+	s1.save()
 	messages.info(request,"name updated successfully...  thank you!!")
 	c = {}
 	c.update(csrf(request))
@@ -41,9 +47,19 @@ def validname(request):
 def updateDOB(request):
 	c = {}
 	c.update(csrf(request))
-	return render(request,'updateDOB.html',c)
+	test={}
+	test['form1']=imageupload();
+	return render(request,'updateDOB.html',test)
 
 def validDOB(request):
+	dob=request.POST['udate']
+	tp=request.POST['agep']
+	test2=imageupload(request.POST,request.FILES)
+	st=newapp.objects.get(id=request.session['uid'])
+	st.birthdate=dob
+	st.agefname=tp
+	st.agef=request.FILES['file1']
+	st.save()
 	messages.info(request,"Date of Birth updated successfully...  thank you!!")
 	c = {}
 	c.update(csrf(request))
@@ -52,9 +68,22 @@ def validDOB(request):
 def updateadd(request):
 	c = {}
 	c.update(csrf(request))
-	return render(request,'updateadd.html',c)
+	test={}
+	test['form1']=imageupload();
+	return render(request,'updateadd.html',test)
 
 def validadd(request):
+	address1=(request.POST['house'] + "- " + request.POST['area'] +" " + request.POST['tv'] + " " + request.POST['dist']
+						   +" " +request.POST['state'] +" "+request.POST['pincode'])
+	rdate1=request.POST['date']
+	adp1=request.POST['adp']
+	test2=imageupload(request.POST,request.FILES)
+	st=newapp.objects.get(id=request.session['uid'])
+	st.address=address1
+	st.addfname=adp1
+	st.rdate=rdate1
+	st.addf=request.FILES['file1']
+	st.save()
 	messages.info(request,"Address updated successfully...  thank you!!")
 	c = {}
 	c.update(csrf(request))
@@ -63,9 +92,15 @@ def validadd(request):
 def updatephoto(request):
 	c = {}
 	c.update(csrf(request))
-	return render(request,'updatephoto.html',c)
+	test={}
+	test['form1']=imageupload();
+	return render(request,'updatephoto.html',test)
 
 def validphoto(request):
+	test2=imageupload(request.POST,request.FILES)
+	st=newapp.objects.get(id=request.session['uid'])
+	st.phf=request.FILES['file1']
+	st.save()
 	messages.info(request,"Photo updated successfully...  thank you!!")
 	c = {}
 	c.update(csrf(request))

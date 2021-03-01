@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 	'application',
 	'new_Aadhar',
 	'genration',
+    'aadhar_download'
 ]
 
 MIDDLEWARE = [

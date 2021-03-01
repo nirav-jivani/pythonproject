@@ -8,6 +8,7 @@ from new_Aadhar.models import newapp
 from django.core import serializers
 from .forms import imageupload
 import random
+from datetime import date 
 # Create your views here.
 
 def address(request):
@@ -16,18 +17,24 @@ def address(request):
 	return render(request,'new_aadhar.html', c)
 	
 def dob(request):
-	request.session['address']=(request.POST['house'] + "- " + request.POST['area'] +" " + request.POST['tv'] + " " + request.POST['dist']
-						   +" " +request.POST['state'] +" "+request.POST['pincode'])
-	request.session['rdate']=request.POST['date']
 	c = {}
 	c.update(csrf(request))
+	request.session['address']=(request.POST['house'] + "- " + request.POST['area'] +" " + request.POST['tv'] + " " + request.POST['dist']
+						   +" " +request.POST['state'] +" "+request.POST['pincode'])
+	temp=request.session['rdate']=request.POST['date']
+	if(temp>str(date.today())):
+		messages.info(request,"date is invalid ....")
+		return render(request,'new_aadhar.html', c)
 	return render(request,'dob.html', c)
 
 def personal(request):
 	request.session['baddress']=(request.POST['tv'] + " " + request.POST['dist']+" " +request.POST['state'] +" "+request.POST['pincode'])
-	request.session['bdate']=request.POST['date']
+	temp=request.session['bdate']=request.POST['date']
 	c = {}
 	c.update(csrf(request))
+	if(temp>str(date.today())):
+		messages.info(request,"date is invalid ....")
+		return render(request,'dob.html', c)
 	return render(request,'personal.html', c)
 	
 def declaration(request):
@@ -43,9 +50,12 @@ def proof(request):
 	request.session['number1']=request.POST['number1']
 	request.session['email']=request.POST['email']
 	request.session['place']=request.POST['place']
-	request.session['fdate']=request.POST['date']
+	temp=request.session['fdate']=request.POST['date']
 	c = {}
 	c.update(csrf(request))
+	if(temp>str(date.today())):
+		messages.info(request,"date is invalid ....")
+		return render(request,'dec.html', c)
 	test={}
 	test['form']=imageupload();
 	return render(request,'proof.html',test)
@@ -75,8 +85,13 @@ def preview(request):
 	,agef=request.FILES['file2']
 	,phf=request.FILES['file3']
 	,uid=uidt);
-	ls.save();
-	return render(request,'details.html',{'it':ls})
+	try:
+		temp=newapp(birthdate=request.session['bdate'],name=request.session['name'])
+		messages.info(request,"user already exist your Aadhar already made please visit nearest branch")
+		return render(request,'logedin.html',c)
+	except:
+		ls.save();
+		return render(request,'details.html',{'it':ls})
 
 def submitform(request):
 	c = {}

@@ -32,7 +32,9 @@
 <!--===============================================================================================-->
 </head>
 <body>
-
+	{% for message in messages %}
+			<script>alert("{{ message }}")</script>
+		{% endfor %}
 
 	<div class="container-contact100">
 		<div class="wrap-contact100">

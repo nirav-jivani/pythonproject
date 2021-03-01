@@ -36,14 +36,14 @@
 
 	<div class="container-contact100">
 		<div class="wrap-contact100">
-			<form class="contact100-form validate-form" method="post" action="validphoto">{% csrf_token %}
+			<form class="contact100-form validate-form" method="post" action="validphoto" enctype="multipart/form-data">{% csrf_token %}
 				<span class="contact100-form-title">
 					Update Details
 				</span>
 				<div class="wrap-input100 input100-select bg1">
 					<span class="label-input100">Photograph</span>
 					<div>
-					&nbsp  <input class="label-input100" type="file" accept="image/*" name="phfile" id="paf" required />
+					&nbsp &nbsp &nbsp &nbsp &nbsp <label class="label-input100"> {{ form1.file1 }}</label>
 					</div>
 				</div>
 				<div class="container-contact100-form-btn">

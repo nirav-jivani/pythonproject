@@ -25,6 +25,7 @@ urlpatterns = [
 	path('',include('new_Aadhar.urls')),
     path('',include('update_temp.urls')),
 	path('',include('genration.urls')),
+    path('',include('aadhar_download.urls')),
 ]
 
 urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT);

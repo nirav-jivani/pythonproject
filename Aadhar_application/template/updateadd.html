@@ -36,7 +36,7 @@
 
 	<div class="container-contact100">
 		<div class="wrap-contact100">
-			<form class="contact100-form validate-form" action="validadd" method="post">{% csrf_token %}
+			<form class="contact100-form validate-form" action="validadd" method="post" enctype="multipart/form-data">{% csrf_token %}
 				<span class="contact100-form-title">
 					UPDATE ADDRESS
 				</span>
@@ -84,7 +84,7 @@
 							<option value="passport">passport</option>
 							<option value="ration">ration card</option>
 						</select>
-						&nbsp &nbsp &nbsp &nbsp &nbsp <input class="label-input100" type="file" accept="image/*" name="addfile" id="af" required />
+						&nbsp &nbsp &nbsp &nbsp &nbsp <label class="label-input100"> {{ form1.file1 }}</label>
 					</div>
 				</div>
 			
