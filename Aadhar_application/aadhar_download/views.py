@@ -11,22 +11,30 @@ import random
 # Create your views here.
 
 
-
-
 def downloadinfo(request):
-    c = {}
-    c.update(csrf(request))
-    return render(request,'downloadinfo.html',c)
+	c = {}
+	c.update(csrf(request))
+	if 'otps2' not in request.session:
+		messages.info(request,"Master otp not set please set it..")
+		return render(request,"logedin.html",c)
+	return render(request,'downloadinfo.html',c)
+
 
 
 def downloadvalid(request):
 	c = {}
 	c.update(csrf(request))
 	number1=request.POST['number']
-	uid=request.POST['anum']
-	try:
-		s1=newapp.objects.get(id=uid,number=number1)
-		return render(request,'displayaadhar.html',{'test':s1})
-	except:
-		messages.info(request,'invalid details please enter valid details')
-		return render(request,'logedin.html',c)
+	otp1=request.POST['msotp']
+	otp2=request.session['otps2']
+	if otp1 != otp2:
+		messages.info(request,"invalid master otp....")
+		return render(request,'downloadinfo.html',c)
+	else:
+		uid=request.POST['anum']
+		try:
+			s1=newapp.objects.get(id=uid,number=number1)
+			return render(request,'displayaadhar.html',{'test':s1})
+		except:
+			messages.info(request,'invalid details please enter valid details')
+			return render(request,'logedin.html',c)

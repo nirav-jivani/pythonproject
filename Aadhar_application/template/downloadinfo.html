@@ -24,6 +24,9 @@
 <!--===============================================================================================-->
 </head>
 <body>
+{% for message in messages %}
+			<script>alert("{{ message }}")</script>
+		{% endfor %}
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">

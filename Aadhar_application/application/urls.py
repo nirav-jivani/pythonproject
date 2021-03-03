@@ -12,4 +12,7 @@ urlpatterns =[
 	path('invalid',views.invalid),
 	path('logout',views.logout),
 	path('otpvalid',views.otpvalid),
+	path('forgot',views.forgot),
+	path('send',views.send),
+	path('reset',views.reset),
 	]

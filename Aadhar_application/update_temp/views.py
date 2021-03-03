@@ -12,6 +12,9 @@ import random
 def updateinfo(request):
 	c = {}
 	c.update(csrf(request))
+	if 'otps2' not in request.session:
+		messages.info(request,"Master otp not set please set it..")
+		return render(request,"logedin.html",c)
 	return render(request,'updateinfo.html',c)
 
 def updatelist(request):
@@ -19,6 +22,11 @@ def updatelist(request):
 	c.update(csrf(request))
 	number1=request.POST['number']
 	uid=request.POST['anum']
+	otp=request.POST['msotp']
+	otp2=request.session['otps2']
+	if otp != otp2:
+		messages.info(request,"invalid master otp....")
+		return render(request,'updateinfo.html',c)
 	try:
 		s1=newapp.objects.get(id=uid,number=number1)
 		request.session['uid']=uid

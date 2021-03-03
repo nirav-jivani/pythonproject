@@ -1,12 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\aadhar_download",
     "\\application",
-    "\\new_Aadhar",
-    "\\template",
-    "\\update_temp"
+    "\\template"
   ],
-  "SelectedNode": "\\aadhar_download\\urls.py",
+  "SelectedNode": "\\application\\views.py",
   "PreviewInSolutionExplorer": false
 }
