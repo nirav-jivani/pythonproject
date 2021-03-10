@@ -20,7 +20,7 @@ class newapp(models.Model):
 	addf=models.ImageField(null=True,blank=True,upload_to="images/address_proof/")
 	agef=models.ImageField(null=True,blank=True,upload_to="images/age_proof/")
 	phf=models.ImageField(null=True,blank=True,upload_to="images/photograph/")
-	uid=models.BigIntegerField()
+	vid=models.BigIntegerField()
 	class Meta:
 		db_table="user_details"
 

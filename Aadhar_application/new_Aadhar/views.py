@@ -8,7 +8,9 @@ from new_Aadhar.models import newapp
 from django.core import serializers
 from .forms import imageupload
 import random
-from datetime import date 
+from datetime import date
+import calendar
+import time 
 # Create your views here.
 
 def address(request):
@@ -61,7 +63,9 @@ def proof(request):
 	return render(request,'proof.html',test)
 
 def preview(request):
-	uidt=random.randint(100000000000,999999999999)
+	uidt=random.randint(10000000000,99999999999)
+	ts = calendar.timegm(time.gmtime())
+	uidt=(str(uidt)+str(ts))
 	request.session['uid']=uidt
 	c = {}
 	c.update(csrf(request))
@@ -84,9 +88,9 @@ def preview(request):
 	,addf=request.FILES['file1']
 	,agef=request.FILES['file2']
 	,phf=request.FILES['file3']
-	,uid=uidt);
+	,vid=uidt);
 	try:
-		temp=newapp(birthdate=request.session['bdate'],name=request.session['name'])
+		temp=newapp.object.get(birthdate=request.session['bdate'],name=request.session['name'])
 		messages.info(request,"user already exist your Aadhar already made please visit nearest branch")
 		return render(request,'logedin.html',c)
 	except:

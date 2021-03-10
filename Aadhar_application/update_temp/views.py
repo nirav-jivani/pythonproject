@@ -22,18 +22,19 @@ def updatelist(request):
 	c.update(csrf(request))
 	number1=request.POST['number']
 	uid=request.POST['anum']
-	otp=request.POST['msotp']
-	otp2=request.session['otps2']
-	if otp != otp2:
+	otp1=str(request.POST['msotp'])
+	otp2 = str(request.session['otps2'])
+	if otp1 != otp2 :
 		messages.info(request,"invalid master otp....")
 		return render(request,'updateinfo.html',c)
-	try:
-		s1=newapp.objects.get(id=uid,number=number1)
-		request.session['uid']=uid
-		return render(request,'updatelist.html',c)
-	except:
-		messages.info(request,'invalid details please enter valid details')
-		return render(request,'logedin.html',c)
+	else:
+		try:
+			s1=newapp.objects.get(id=uid,number=number1)
+			request.session['uid']=uid
+			return render(request,'updatelist.html',c)
+		except:
+			messages.info(request,'invalid details please enter valid details')
+			return render(request,'logedin.html',c)
 
 def updatename(request):
 	c = {}

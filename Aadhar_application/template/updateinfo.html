@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login V1</title>
+	<title>update menu </title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -24,6 +24,9 @@
 <!--===============================================================================================-->
 </head>
 <body>
+{% for message in messages %}
+			<script>alert("{{ message }}")</script>
+		{% endfor %}
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
@@ -38,21 +41,21 @@
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid Aadhar number is required">
-						<input class="input100" type="number" name="anum" placeholder="enter Aadhar number">
+						<input class="input100" type="text" name="anum" placeholder="enter Aadhar number">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
 						</span>
 					</div>					
 					<div class="wrap-input100 validate-input" data-validate = "Mobile Number is required">
-						<input class="input100" type="number" name="number" placeholder="Mobile Number">
+						<input class="input100" type="text" name="number" placeholder="Mobile Number">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
 						</span>
 					</div>
 					<div class="wrap-input100 validate-input" data-validate = "enter Master otp">
-						<input class="input100" type="number" name="msotp" placeholder="enter master otp">
+						<input class="input100" type="text" name="msotp" placeholder="enter master otp">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>

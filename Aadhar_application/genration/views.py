@@ -25,7 +25,7 @@ def genreadhar(request):
 def displaynumber(request):
     vid=request.POST['vid']
     number1=request.POST['number']
-    s1=newapp.objects.get(number=number1,uid=vid)
+    s1=newapp.objects.get(number=number1,vid=vid)
     temp=s1.id
     return render(request,'displaynumber.html',{'nm':temp})
 	
@@ -35,7 +35,7 @@ def genremaster(request):
 	if request.method == 'POST':
 		num=request.POST['number']
 		if newapp.objects.filter(number=num): 
-			request.session['number']=request.POST['number']
+			request.session['number']=num
 			return redirect('/send2')
 		else:
 			messages.info(request,"user can not found please register...")
@@ -46,7 +46,7 @@ def send2(request):
 	num=request.session['number']
 	num1="+91"+str(num)
 	id='ACed978f63efe65f095d94a2785e2c2555'
-	token='be2bfd356cbf5c4825e8b4d0fa203773'
+	token='4c7bb688f9dfb853d04f466de101a8ab'
 	client=Client(id,token)
 	otp=random.randint(1000,9999)
 	request.session['otps2']=otp;
@@ -58,4 +58,4 @@ def send2(request):
 	c = {}
 	c.update(csrf(request))
 	messages.info(request,"master otp send successfully.....")
-	return render(request,'genre.html', c)
+	return render(request,'logedin.html', c)

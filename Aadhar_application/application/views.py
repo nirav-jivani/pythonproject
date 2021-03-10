@@ -42,7 +42,7 @@ def verify(request):
 	num=request.session['nums'];
 	num1=("+91"+ str(num))
 	id='ACed978f63efe65f095d94a2785e2c2555'
-	token='be2bfd356cbf5c4825e8b4d0fa203773'
+	token='4c7bb688f9dfb853d04f466de101a8ab'
 	client=Client(id,token)
 	otp=random.randint(1000,9999)
 	request.session['otps']=otp;
@@ -83,7 +83,7 @@ def logout(request):
 	messages.info(request,"Logout successfully....  Thank you!!!!!")
 	c = {}
 	c.update(csrf(request))
-	Session.objects.all().delete ()
+	Session.objects.all().delete()
 	return render(request,'index.html', c)
 	
 def otpvalid(request):
@@ -129,7 +129,7 @@ def send(request):
 	num=request.session['number']
 	num1="+91"+str(num)
 	id='ACed978f63efe65f095d94a2785e2c2555'
-	token='be2bfd356cbf5c4825e8b4d0fa203773'
+	token='4c7bb688f9dfb853d04f466de101a8ab'
 	client=Client(id,token)
 	otp=random.randint(1000,9999)
 	request.session['otps1']=otp;

@@ -25,8 +25,8 @@ def downloadvalid(request):
 	c = {}
 	c.update(csrf(request))
 	number1=request.POST['number']
-	otp1=request.POST['msotp']
-	otp2=request.session['otps2']
+	otp1=str(request.POST['msotp'])
+	otp2=str(request.session['otps2'])
 	if otp1 != otp2:
 		messages.info(request,"invalid master otp....")
 		return render(request,'downloadinfo.html',c)

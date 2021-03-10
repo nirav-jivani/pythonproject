@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\application",
+    "\\genration",
     "\\template"
   ],
-  "SelectedNode": "\\application\\views.py",
+  "SelectedNode": "\\template\\forgot.html",
   "PreviewInSolutionExplorer": false
 }
