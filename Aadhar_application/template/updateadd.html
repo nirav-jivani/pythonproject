@@ -1,0 +1,125 @@
+{% load static %}
+{% csrf_token %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>_Aadhar_address</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor1/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts1/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts1/iconic/css/material-design-iconic-font.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor1/animate/animate.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor1/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor1/animsition/css/animsition.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor1/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor1/daterangepicker/daterangepicker.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor1/noui/nouislider.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css1/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css1/main.css' %}">
+<!--===============================================================================================-->
+</head>
+<body>
+
+
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form" action="validadd" method="post">{% csrf_token %}
+				<span class="contact100-form-title">
+					UPDATE ADDRESS
+				</span>
+
+				<div class="wrap-input100 validate-input bg1" data-validate="Please Enter Your house no">
+					<span class="label-input100">House No.</span>
+					<input class="input100" type="text" name="house" placeholder="Enter Your house no" />
+				</div>
+				<div class="wrap-input100 validate-input bg1" data-validate="Please Enter Your area/street">
+					<span class="label-input100">Street/Area/Locality</span>
+					<input class="input100" type="text" name="area" placeholder="Enter Your area/street" />
+				</div>
+				<div class="wrap-input100 validate-input bg1" data-validate="Please Enter Your town/village">
+					<span class="label-input100">Town/Village</span>
+					<input class="input100" type="text" name="tv" placeholder="Enter Your town/village" />
+				</div>
+				<div class="wrap-input100 validate-input bg1" data-validate="Please Enter Your Post office">
+					<span class="label-input100">Post Office </span>
+					<input class="input100" type="text" name="postof" placeholder="Enter Your Post office" />
+				</div>
+				
+				<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Enter Your district">
+					<span class="label-input100">district</span>
+					<input class="input100" type="text" name="dist" placeholder="Enter Your district " />
+				</div>
+
+				<div class="wrap-input100 bg1 rs1-wrap-input100">
+					<span class="label-input100">State</span>
+					<input class="input100" type="text" name="state" placeholder="Enter The State" required />
+				</div>
+				
+				<div class="wrap-input100 bg1 rs1-wrap-input100">
+					<span class="label-input100">pincode</span>
+					<input class="input100" type="number" name="pincode" placeholder="Enter pin code" required />
+				</div>
+				<div class="wrap-input100 bg1 rs1-wrap-input100">
+					<span class="label-input100">I am ordinarily resident at the address given at above since</span>
+					<input class="input100" type="date" name="date" required />
+				</div>
+				<div class="wrap-input100 input100-select bg1">
+					<span class="label-input100">Address Proof</span>
+					<div>
+						<select class="js-select2" name="adp">
+							<option value="bill">any bill type</option>
+							<option value="passport">passport</option>
+							<option value="ration">ration card</option>
+						</select>
+						&nbsp &nbsp &nbsp &nbsp &nbsp <input class="label-input100" type="file" accept="image/*" name="addfile" id="af" required />
+					</div>
+				</div>
+			
+				<div class="container-contact100-form-btn">
+					<button class="contact100-form-btn" input type="submit">
+						<span>
+							SUBMIT
+						</span>
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+
+<!--===============================================================================================-->
+	<script src="{% static 'vendor1/jquery/jquery-3.2.1.min.js '%}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor1/animsition/js/animsition.min.js '%}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor1/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'vendor1/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor1/select2/select2.min.js' %}"></script>
+
+<!--===============================================================================================-->
+	<script src="{% static 'vendor1/daterangepicker/moment.min.js' %}"></script>
+	<script src="{% static 'vendor1/daterangepicker/daterangepicker.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor1/countdowntime/countdowntime.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor1/noui/nouislider.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'js1/main.js' %}"></script>
+
+</body>
+</html>
