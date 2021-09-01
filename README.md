@@ -13,6 +13,7 @@ Major Functionalities:
 • Download E-Aadhar card
 
 Functionality in brief:
+
     1. New Aadhar Application
     Description :
     A portal to apply for Aadhar Card, a form to be filled to 
